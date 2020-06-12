@@ -1,21 +1,24 @@
 # Gobarber
 
-Um sistema SPA para que provedores de serviços como cabeleiros controlem sua agente de antedimento.
-
+A SPA system for providers such as hairdressers to control their antediment agent.
 ## Tecnologias Usadas
 
 ### Backend
 
-**Typescrip**
-**Express**
-**TypeORM**
+**Typescrip**;
+
+**Express**;
+
+**TypeORM with Postgres**;
 
 ### Web
  
- **Typescrip**
- **ReactJS**
+ **Typescrip**;
+ 
+ **ReactJS**;
 
 ### Mobile
 
-**Typescrip**
-**React Native**
+**Typescrip**;
+
+**React Native**;

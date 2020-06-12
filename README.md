@@ -5,7 +5,7 @@ A SPA system for providers such as hairdressers to control their antediment agen
 
 ### Backend
 
-**Typescrip**;
+**Typescript**;
 
 **Express**;
 
@@ -13,12 +13,12 @@ A SPA system for providers such as hairdressers to control their antediment agen
 
 ### Web
  
- **Typescrip**;
+ **Typescript**;
  
  **ReactJS**;
 
 ### Mobile
 
-**Typescrip**;
+**Typescript**;
 
 **React Native**;

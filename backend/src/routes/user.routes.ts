@@ -3,17 +3,17 @@ import { Router } from 'express';
 // import { getCustomRepository } from 'typeorm';
 import CreateUserService from '../services/CreateUserService';
 
-const appointmentRouter = Router();
+const userRouter = Router();
 
-appointmentRouter.get('/', async (request, response) => {
-	// const appointmentRepository = getCustomRepository(userRepository);
+userRouter.get('/', async (request, response) => {
+	// const userRepository = getCustomRepository(userRepository);
 
-	// const appointments = await appointmentRepository.find();
+	// const users = await userRepository.find();
 
 	return response.json('ok');
 });
 
-appointmentRouter.post('/', async (request, response) => {
+userRouter.post('/', async (request, response) => {
 	try {
 		const { name, email, password } = request.body;
 
@@ -33,4 +33,4 @@ appointmentRouter.post('/', async (request, response) => {
 	}
 });
 
-export default appointmentRouter;
+export default userRouter;

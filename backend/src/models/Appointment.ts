@@ -18,7 +18,7 @@ export default class Appointment {
 	@Column()
 	providerId: string;
 
-	@ManyToOne(() => User)
+	// @ManyToOne(() => User)
 	@JoinColumn({ name: 'providerId' })
 	provider: User;
 

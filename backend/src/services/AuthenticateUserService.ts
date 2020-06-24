@@ -1,7 +1,7 @@
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
-
+import authConfig from '../config/auth';
 import User from '../models/User';
 
 interface IRequest {
@@ -28,9 +28,11 @@ export default class AuthenticateUserService {
 			throw new Error('Email or password invalid');
 		}
 
-		const token = sign({}, 'testeteste', {
+		const { secret, expiresIn } = authConfig.jwt;
+
+		const token = sign({}, secret, {
 			subject: user.id,
-			expiresIn: '1d',
+			expiresIn,
 		});
 
 		return { user, token };

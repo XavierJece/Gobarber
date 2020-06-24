@@ -2,6 +2,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
 import authConfig from '../config/auth';
+import AppError from '../Errors/AppError';
 import User from '../models/User';
 
 interface IRequest {
@@ -21,11 +22,11 @@ export default class AuthenticateUserService {
 		const user = await userRepository.findOne({ where: { email } });
 
 		if (!user) {
-			throw new Error('Email or password invalid');
+			throw new AppError('Email or password invalid', 401);
 		}
 
 		if (!(await compare(password, user.password))) {
-			throw new Error('Email or password invalid');
+			throw new AppError('Email or password invalid', 401);
 		}
 
 		const { secret, expiresIn } = authConfig.jwt;

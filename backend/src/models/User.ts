@@ -20,6 +20,9 @@ export default class Appointment {
 	@Column()
 	password: string;
 
+	@Column()
+	avatar: string;
+
 	@CreateDateColumn()
 	createAt: Date;
 

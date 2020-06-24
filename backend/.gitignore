@@ -1,3 +1,8 @@
+# Statisticians Files
+tmp/*
+!tmp/.gitkeep
+
+
 #Configuration Files
 ormconfig.json
 

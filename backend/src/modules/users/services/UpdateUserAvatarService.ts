@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { getRepository } from 'typeorm';
-import uploadConfig from '../config/upload';
-import AppError from '../Errors/AppError';
-import User from '../models/User';
+import uploadConfig from '@config/upload';
+import AppError from '@shared/Errors/AppError';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 interface IRequest {
 	userId: string;

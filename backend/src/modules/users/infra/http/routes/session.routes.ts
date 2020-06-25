@@ -1,7 +1,6 @@
-import { Router } from 'express';
-
 // import { getCustomRepository } from 'typeorm';
-import AuthenticateUserService from '../services/AuthenticateUserService';
+import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
+import { Router } from 'express';
 
 const sessionRouter = Router();
 

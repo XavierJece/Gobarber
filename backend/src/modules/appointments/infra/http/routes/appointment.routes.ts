@@ -5,18 +5,18 @@ import { parseISO } from 'date-fns';
 import { Router } from 'express';
 
 const appointmentRouter = Router();
-const appointmentRepository = new AppointmentRepository();
 
 appointmentRouter.use(ensureAuthenticated);
 
-// appointmentRouter.get('/', async (request, response) => {
-// 	const appointments = await appointmentRepository.find();
+appointmentRouter.get('/', async (request, response) => {
+	// const appointments = await appointmentRepository.find();
 
-// 	response.json(appointments);
-// });
+	response.json({ ok: true });
+});
 
 appointmentRouter.post('/', async (request, response) => {
 	const { providerId, date } = request.body;
+	const appointmentRepository = new AppointmentRepository();
 
 	const parsedDate = parseISO(date);
 

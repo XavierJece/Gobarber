@@ -3,7 +3,7 @@ import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAut
 import CreateUserService from '@modules/users/services/CreateUserService';
 import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatarService';
 import { Router } from 'express';
-// import { getCustomRepository } from 'typeorm';
+import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import multer from 'multer';
 
 const userRouter = Router();
@@ -19,8 +19,9 @@ userRouter.get('/', async (request, response) => {
 
 userRouter.post('/', async (request, response) => {
 	const { name, email, password } = request.body;
+	const usersRepository = new UsersRepository();
 
-	const createUser = new CreateUserService();
+	const createUser = new CreateUserService(usersRepository);
 
 	const user = await createUser.execute({
 		name,
@@ -38,7 +39,9 @@ userRouter.patch(
 	ensureAuthenticated,
 	upload.single('avatar'),
 	async (request, response) => {
-		const updateUserAvatar = new UpdateUserAvatarService();
+		const usersRepository = new UsersRepository();
+
+		const updateUserAvatar = new UpdateUserAvatarService(usersRepository);
 
 		const user = await updateUserAvatar.execute({
 			userId: request.user.id,

@@ -25,6 +25,7 @@
 			"error", {
 				"argsIgnorePattern": "_"
 			}],
+		"no-useless-constructor": "off",
 		"import/extensions":[
 			"error",
 			"ignorePackages",

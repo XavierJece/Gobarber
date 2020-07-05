@@ -6,10 +6,15 @@
 	"password": "",
 	"database": "",
 
-	"entities": [""],
-	"migrations": [""],
+	"entities": [
+		"./src/modules/**/infra/typeorm/entities/*.ts"
+	],
+	"migrations": [
+		"./src/shared/intra/typeorm/migrations/*.ts"
+	],
+
 	"cli": {
-		"migrationsDir":""
+		"migrationsDir": "./src/shared/infra/typeorm/migrations"
 	},
 	"migrationsTableName": "_migrations",
 

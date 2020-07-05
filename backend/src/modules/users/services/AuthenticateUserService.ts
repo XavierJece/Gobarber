@@ -5,6 +5,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 import IUsersRepository from '../repositories/IUsersRepository';
+import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
 	email: string;
@@ -15,11 +16,15 @@ interface IResponse {
 	user: User;
 	token: string;
 }
+
 @injectable()
 export default class AuthenticateUserService {
 	constructor(
 		@inject('UsersRepository')
 		private usersRepository: IUsersRepository,
+
+		@inject('HashProvider')
+		private hashProvider: IHashProvider,
 	) {}
 
 	public async execute({ email, password }: IRequest): Promise<IResponse> {
@@ -29,7 +34,7 @@ export default class AuthenticateUserService {
 			throw new AppError('Email or password invalid', 401);
 		}
 
-		if (!(await compare(password, user.password))) {
+		if (!(await this.hashProvider.compareHash(password, user.password))) {
 			throw new AppError('Email or password invalid', 401);
 		}
 

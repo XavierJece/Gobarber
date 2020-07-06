@@ -27,11 +27,11 @@ export default class ReseatPasswordService {
 		const userTokenExists = await this.userTokensRepository.findByToken(token);
 
 		if (!userTokenExists) {
-			throw new AppError('User token does not exists');
+			throw new AppError('Invalided Token does not exists');
 		}
 
-		const userExists = await this.usersRepository.findByEmail(
-			userTokenExists.id,
+		const userExists = await this.usersRepository.findById(
+			userTokenExists.userId,
 		);
 
 		if (!userExists) {

@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateAppointments1591918232328
+export default class CreateUserTokens1594043449207
 	implements MigrationInterface {
 	public async up(queryRunner: QueryRunner): Promise<void> {
 		await queryRunner.createTable(
 			new Table({
-				name: 'users',
+				name: 'user_tokens',
 				columns: [
 					{
 						name: 'id',

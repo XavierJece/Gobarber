@@ -1,19 +1,19 @@
 import 'reflect-metadata';
 
-import upload from '@config/upload';
-import AppError from '@shared/Errors/AppError';
 import express, { NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
 
+import AppError from '@shared/Errors/AppError';
+import upload from '@config/upload';
 import routes from './routes';
 
 import '@shared/infra/typeorm';
-import 'express-async-errors';
 import '@shared/container';
 
 const app = express();
 
 app.use(express.json());
-app.use('/files', express.static(upload.directory));
+app.use('/files', express.static(upload.uploadsFolder));
 app.use(routes);
 
 app.use(
